@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /servers/
+Disallow: /backups/
+Disallow: /logs/
+Allow: /index.php
+Allow: /login.php

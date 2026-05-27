@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  samp-panel:
+    build: .
+    ports:
+      - "80:80"
+      - "7777:7777/udp"
+      - "9501:9501"
+    volumes:
+      - ./servers:/var/www/html/servers
+      - ./backups:/var/www/html/backups
+      - ./cache:/var/www/html/cache
+      - ./data:/var/www/html/data
+      - ./logs:/var/www/html/logs
+    environment:
+      - PHP_UPLOAD_MAX_FILESIZE=50M
+      - TURBO_HOSTING=true
+      - MAX_SERVERS=999
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - samp-network
+
+  samp-server:
+    image: samp/samp-server
+    ports:
+      - "7777:7777/udp"
+      - "7777:7777/tcp"
+    volumes:
+      - ./servers:/home/samp/samp03svr
+    depends_on:
+      - samp-panel
+    restart: unless-stopped
+    networks:
+      - samp-network
+
+networks:
+  samp-network:
+    driver: bridge

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url><loc>/index.php</loc></url>
+    <url><loc>/install.php</loc></url>
+    <url><loc>/files.php</loc></url>
+    <url><loc>/editor.php</loc></url>
+    <url><loc>/plugins.php</loc></url>
+    <url><loc>/commands.php</loc></url>
+    <url><loc>/players.php</loc></url>
+    <url><loc>/stats.php</loc></url>
+    <url><loc>/backup.php</loc></url>
+    <url><loc>/settings.php</loc></url>
+</urlset>
